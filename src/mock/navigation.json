@@ -1,0 +1,38 @@
+[
+    {
+        "name": " ",
+        "icon": "fa-twitter"
+    },
+    {
+        "name": "Home",
+        "icon": "fa-home"
+    },
+    {
+        "name": "Explore",
+        "icon": "fa-hashtag"
+    },
+    {
+        "name": "Notifications",
+        "icon": "fa-regular-bell"
+    },
+    {
+        "name": "Messages",
+        "icon": "fa-regular-envelope"
+    },
+    {
+        "name": "Bookmarks",
+        "icon": "fa-regular-bookmark"
+    },
+    {
+        "name": "Lists",
+        "icon": "fa-regular-list-alt"
+    },
+    {
+        "name": "Profile",
+        "icon": "fa-regular-user"
+    },
+    {
+        "name": "More",
+        "icon": "fa-ellipsis-h"
+    }
+]
