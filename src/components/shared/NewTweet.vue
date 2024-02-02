@@ -3,12 +3,13 @@
     <div class="pt-[0.4rem] flex h-[7.1rem]">
       <Avatar
         class="pl-[1.6rem] pr-[1rem]"
-        image="https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg"
+        :image="baseUrl + this.user.avatar"
       />
       <input
         class="w-[52rem] bg-black text-white placeholder-[#6E767D] placeholder-opacity-80 font-roboto text-[2rem] font-[40rem]"
         type="text"
         placeholder="What's happening?"
+        v-model="content"
       />
     </div>
     <div class="h-[4.8rem] text-white pl-[6.6rem] flex  gap-3">
@@ -17,8 +18,8 @@
       </div>
       <div class="w-[28rem]">
       </div>
-      <div class="pt-3">
-        <ButtonC type="tweet" value="Tweet" class="pt-2"/>
+      <div class="pt-3" @click="newTweet($store.getters.getUser.user.id,content)">
+        <ButtonC type="tweet" value="Tweet" class="pt-2" />
       </div>
     </div>
   </div>
@@ -28,6 +29,7 @@
 import Avatar from "./Avatar.vue";
 import data from "@/mock/newTweetIcons.json";
 import ButtonC from "./ButtonC.vue";
+import { mentionApi } from '@/services/apiService';
 export default {
   name: "NewTweet",
   components: {
@@ -37,10 +39,31 @@ export default {
   data() {
     return {
       icons: [],
+      content:"",
+      baseUrl: this.$store.getters.getBaseProfileUrl,
+      user : this.$store.getters.getUser.user
     };
   },
   mounted() {
     this.icons = data;
   },
+  methods:{
+    async newTweet(userId,content){
+      try{
+        const postData = {
+          UserId:userId,
+          Content:content,
+          CDate:new Date()
+        };
+        const apiUrl = "/NewMention";
+        const response = await mentionApi.post(apiUrl,postData);
+        if(response.status ==200){
+          location.reload();
+        }
+      }catch(error){
+        console.log(error.meesage);
+      }
+    }
+  }
 };
 </script>

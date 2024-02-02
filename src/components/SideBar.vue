@@ -3,7 +3,7 @@
     <div class="pl-[1.2rem]">
       <NavigationC />
       <ButtonC type="default" value="Tweet" class="pt-[1.2rem]"/>
-      <ProfileSettings name="Yusuf Eren Tek" userName="yusuferen" class="absolute bottom-1"/>
+      <ProfileSettings class="absolute bottom-1"/>
     </div>
   </div>
 </template>
@@ -20,5 +20,10 @@ export default {
     ButtonC,
     ProfileSettings
   },
+  data(){
+    return{
+      
+    }
+  }
 };
 </script>
